@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import Checkout from "./components/Checkout";
 import "./App.css";
 
