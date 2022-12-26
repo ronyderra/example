@@ -6,9 +6,11 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-
+import { useSelector, useDispatch } from "react-redux";
+import { achievments } from "../dataSlice";
 export default function PaymentForm() {
   const [data, setData] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getData();
@@ -31,12 +33,13 @@ export default function PaymentForm() {
             <Grid item xs={12} md={6} key={index}>
               <TextField
                 required
-                id={item.achievmentNumber}
+                id={String(item.achievmentNumber)}
                 label={item.name}
                 helperText={item.description}
                 fullWidth
                 autoComplete="cc-csc"
                 variant="standard"
+                onChange={(e) => dispatch(achievments(item.achievmentNumber))}
               />
             </Grid>
           );
