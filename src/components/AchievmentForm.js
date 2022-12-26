@@ -25,7 +25,7 @@ export default function PaymentForm() {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Payment method
+        Choose Achievment
       </Typography>
       <Grid container spacing={3}>
         {data.map((item, index) => {
