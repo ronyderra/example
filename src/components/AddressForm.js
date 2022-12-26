@@ -15,9 +15,9 @@ export default function AddressForm() {
         <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="firstName"
-            name="firstName"
-            label="First name"
+            id="name"
+            name="name"
+            label="Project Name"
             fullWidth
             autoComplete="given-name"
             variant="standard"
@@ -26,9 +26,9 @@ export default function AddressForm() {
         <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="lastName"
-            name="lastName"
-            label="Last name"
+            id="projectNumber"
+            name="projectNumber"
+            label="Project Number"
             fullWidth
             autoComplete="family-name"
             variant="standard"
@@ -37,9 +37,9 @@ export default function AddressForm() {
         <Grid item xs={12}>
           <TextField
             required
-            id="address1"
-            name="address1"
-            label="Address line 1"
+            id="description"
+            name="description"
+            label="Partnering with...."
             fullWidth
             autoComplete="Project Details-line1"
             variant="standard"
@@ -47,20 +47,30 @@ export default function AddressForm() {
         </Grid>
         <Grid item xs={12}>
           <TextField
-            id="address2"
-            name="address2"
-            label="Address line 2"
+            id="collectionAddress"
+            name="collectionAddress"
+            label="Collection Addresse"
             fullWidth
             autoComplete="Project Details-line2"
             variant="standard"
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
+        <TextField
+            id="startDate"
+            name="startDate"
+            label="Start Date"
+            fullWidth
+            autoComplete="Project Details-line2"
+            variant="standard"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+        <TextField
             required
-            id="city"
-            name="city"
-            label="City"
+            id="endDate"
+            name="endDate"
+            label="End Date"
             fullWidth
             autoComplete="Project Details-level2"
             variant="standard"
@@ -68,19 +78,10 @@ export default function AddressForm() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            id="state"
-            name="state"
-            label="State/Province/Region"
-            fullWidth
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
             required
-            id="zip"
-            name="zip"
-            label="Zip / Postal code"
+            id="twitterPostId"
+            name="twitterPostId"
+            label="Twitter Post Id"
             fullWidth
             autoComplete="shipping postal-code"
             variant="standard"
@@ -89,20 +90,20 @@ export default function AddressForm() {
         <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="country"
-            name="country"
-            label="Country"
+            id="twitterPartnerId"
+            name="twitterPartnerId"
+            label="Twitter Partner Id"
             fullWidth
             autoComplete="shipping country"
             variant="standard"
           />
         </Grid>
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <FormControlLabel
             control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
             label="Use this address for Partner Details"
           />
-        </Grid>
+        </Grid> */}
       </Grid>
     </React.Fragment>
   );
