@@ -1,89 +1,64 @@
-import * as React from 'react';
-import Typography from '@mui/material/Typography';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Grid from '@mui/material/Grid';
-
-const products = [
-  {
-    name: 'Product 1',
-    desc: 'A nice thing',
-    price: '$9.99',
-  },
-  {
-    name: 'Product 2',
-    desc: 'Another thing',
-    price: '$3.45',
-  },
-  {
-    name: 'Product 3',
-    desc: 'Something else',
-    price: '$6.51',
-  },
-  {
-    name: 'Product 4',
-    desc: 'Best thing of all',
-    price: '$14.11',
-  },
-  { name: 'Shipping', desc: '', price: 'Free' },
-];
-
-const addresses = ['1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
-const payments = [
-  { name: 'Card type', detail: 'Visa' },
-  { name: 'Card holder', detail: 'Mr John Smith' },
-  { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
-  { name: 'Expiry date', detail: '04/2024' },
-];
+import * as React from "react";
+import Typography from "@mui/material/Typography";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Review() {
+  const data = useSelector((state) => state.data);
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Order summary
+        summary
       </Typography>
       <List disablePadding>
-        {products.map((product) => (
-          <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
-          </ListItem>
-        ))}
-
+        <ListItem key={data.projectNumber} sx={{ py: 1, px: 0 }}>
+          <ListItemText primary={"projectNumber"} />
+          <Typography variant="body2">{data.projectNumber}</Typography>
+        </ListItem>
+        <ListItem key={data.name} sx={{ py: 1, px: 0 }}>
+          <ListItemText primary={"Name"} />
+          <Typography variant="body2">{data.name}</Typography>
+        </ListItem>
+        <ListItem key={data.description} sx={{ py: 1, px: 0 }}>
+          <ListItemText primary={"description"} />
+          <Typography variant="body2">{data.description}</Typography>
+        </ListItem>
+        <ListItem key={data.collectionChain} sx={{ py: 1, px: 0 }}>
+          <ListItemText primary={"collectionChain"} />
+          <Typography variant="body2">{data.collectionChain}</Typography>
+        </ListItem>
+        <ListItem key={data.collectionAddress} sx={{ py: 1, px: 0 }}>
+          <ListItemText primary={"collectionAddress"} />
+          <Typography variant="body2">{data.collectionAddress}</Typography>
+        </ListItem>
+        <ListItem key={String(data.startDate)} sx={{ py: 1, px: 0 }}>
+          <ListItemText primary={"startDate"} />
+          <Typography variant="body2">{data.startDate}</Typography>
+        </ListItem>
+        <ListItem key={String(data.endDate)} sx={{ py: 1, px: 0 }}>
+          <ListItemText primary={"endDate"} />
+          <Typography variant="body2">{data.endDate}</Typography>
+        </ListItem>
+        <ListItem key={data.currentProject} sx={{ py: 1, px: 0 }}>
+          <ListItemText primary={"currentProject"} />
+          <Typography variant="body2">{String(data.currentProject)}</Typography>
+        </ListItem>
+        <ListItem key={data.twitterPostId} sx={{ py: 1, px: 0 }}>
+          <ListItemText primary={"twitterPostId"} />
+          <Typography variant="body2">{data.twitterPostId}</Typography>
+        </ListItem>
+        <ListItem key={data.twitterPartnerId} sx={{ py: 1, px: 0 }}>
+          <ListItemText primary={"twitterPartnerId"} />
+          <Typography variant="body2">{String(data.twitterPartnerId)}</Typography>
+        </ListItem>
         <ListItem sx={{ py: 1, px: 0 }}>
-          <ListItemText primary="Total" />
-          <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-            $34.06
-          </Typography>
+          <ListItemText primary={"achievments"} />
+          <Typography variant="body2">{String(data.achievments)}</Typography>
         </ListItem>
       </List>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
-          <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
-            Shipping
-          </Typography>
-          <Typography gutterBottom>John Smith</Typography>
-          <Typography gutterBottom>{addresses.join(', ')}</Typography>
-        </Grid>
-        <Grid item container direction="column" xs={12} sm={6}>
-          <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
-            Partner Details
-          </Typography>
-          <Grid container>
-            {payments.map((payment) => (
-              <React.Fragment key={payment.name}>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.name}</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.detail}</Typography>
-                </Grid>
-              </React.Fragment>
-            ))}
-          </Grid>
-        </Grid>
-      </Grid>
     </React.Fragment>
   );
 }
