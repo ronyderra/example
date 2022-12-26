@@ -15,21 +15,18 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import ProjectForm from "./ProjectForm";
 import AchievmentForm from "./AchievmentForm";
 import Review from "./Review";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
+import { startDate } from "../dataSlice";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
     </Typography>
   );
 }
 
-const steps = ["Project Details", "Partner Details", "Achievment Details"];
+const steps = ["Project Details", "Achievment Details", "Summury"];
 
 function getStepContent(step) {
   switch (step) {
@@ -47,10 +44,36 @@ function getStepContent(step) {
 const theme = createTheme();
 
 export default function Checkout() {
+  const data = useSelector((state) => state.data);
   const [activeStep, setActiveStep] = React.useState(0);
+
+  const dataForPost = {
+    ...data,
+    startDate: new Date(data.startDate),
+    endDate: new Date(data.startDate),
+  };
+
+  var config = {
+    method: "post",
+    url: "https://xp-challenges.herokuapp.com/addProject",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: dataForPost,
+  };
 
   const handleNext = () => {
     console.log(activeStep + 1);
+    if (activeStep + 1 === 3) {
+      console.log("submit");
+      axios(config)
+        .then(function (response) {
+          console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
     setActiveStep(activeStep + 1);
   };
 
@@ -72,7 +95,7 @@ export default function Checkout() {
       >
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap>
-            Company name
+            XP-NETWORK
           </Typography>
         </Toolbar>
       </AppBar>
@@ -91,11 +114,7 @@ export default function Checkout() {
           {activeStep === steps.length ? (
             <React.Fragment>
               <Typography variant="h5" gutterBottom>
-                Thank you for your order.
-              </Typography>
-              <Typography variant="subtitle1">
-                Your order number is #2001539. We have emailed your order confirmation, and will
-                send you an update when your order has shipped.
+               Project Added
               </Typography>
             </React.Fragment>
           ) : (
@@ -109,7 +128,7 @@ export default function Checkout() {
                 )}
 
                 <Button variant="contained" onClick={handleNext} sx={{ mt: 3, ml: 1 }}>
-                  {activeStep === steps.length - 1 ? "Place order" : "Next"}
+                  {activeStep === steps.length - 1 ? "Add Project" : "Next"}
                 </Button>
               </Box>
             </React.Fragment>
