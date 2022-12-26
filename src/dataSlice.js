@@ -47,7 +47,13 @@ export const dataSlice = createSlice({
       state.twitterPartnerId = action.payload;
     },
     achievments: (state, action) => {
-      state.achievments = [...state.achievments, action.payload];
+      console.log(action.payload);
+      const { checked, achievmentNumber } = action.payload;
+      if (checked) {
+        state.achievments = [...state.achievments, achievmentNumber];
+      } else {
+        state.achievments.pop(achievmentNumber);
+      }
     },
   },
 });
