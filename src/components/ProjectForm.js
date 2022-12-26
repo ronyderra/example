@@ -15,8 +15,25 @@ import {
 } from "../dataSlice";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import dayjs, { Dayjs } from "dayjs";
 
 export default function ProjectForm() {
+  const [value, setValue] = React.useState(dayjs("2014-08-18T21:11:54"));
+  const [value1, setValue1] = React.useState(dayjs("2014-08-18T21:11:54"));
+
+  const handleChange = (newValue) => {
+    setValue(newValue);
+    dispatch(startDate(String(newValue)));
+  };
+
+  const handleChange1 = (newValue) => {
+    setValue1(newValue);
+    dispatch(endDate(String(newValue)));
+  };
+
   const dispatch = useDispatch();
 
   return (
@@ -65,36 +82,14 @@ export default function ProjectForm() {
           <TextField
             id="collectionAddress"
             name="collectionAddress"
-            label="Collection Addresse"
+            label="Collection Address"
             fullWidth
             autoComplete="Project Details-line2"
             variant="standard"
             onChange={(e) => dispatch(collectionAddress(e.target.value))}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id="startDate"
-            name="startDate"
-            label="Start Date"
-            fullWidth
-            autoComplete="Project Details-line2"
-            variant="standard"
-            onChange={(e) => dispatch(startDate(e.target.value))}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="endDate"
-            name="endDate"
-            label="End Date"
-            fullWidth
-            autoComplete="Project Details-level2"
-            variant="standard"
-            onChange={(e) => dispatch(endDate(e.target.value))}
-          />
-        </Grid>
+
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -119,6 +114,24 @@ export default function ProjectForm() {
             onChange={(e) => dispatch(twitterPartnerId(e.target.value))}
           />
         </Grid>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <Grid item xs={12} sm={6}>
+            <DateTimePicker
+              label="Start Date"
+              value={value}
+              onChange={handleChange}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <DateTimePicker
+              label="End Date"
+              value={value1}
+              onChange={handleChange1}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </Grid>
+        </LocalizationProvider>
       </Grid>
     </React.Fragment>
   );

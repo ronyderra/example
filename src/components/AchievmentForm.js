@@ -31,16 +31,6 @@ export default function PaymentForm() {
         {data.map((item, index) => {
           return (
             <Grid item xs={12} md={6} key={index}>
-              {/* <TextField
-                required
-                id={String(item.achievmentNumber)}
-                label={item.name}
-                helperText={item.description}
-                fullWidth
-                autoComplete="cc-csc"
-                variant="standard"
-                onChange={(e) => dispatch(achievments(item.achievmentNumber))}
-              /> */}
               <FormControlLabel
                 id={String(item.achievmentNumber)}
                 control={<Checkbox color="secondary" name="saveCard" />}
