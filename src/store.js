@@ -3,6 +3,6 @@ import { dataSlice } from "./dataSlice";
 
 export default configureStore({
   reducer: {
-    global: dataSlice,
+    data: dataSlice.reducer,
   },
 });

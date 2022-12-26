@@ -67,4 +67,4 @@ export const {
   collectionAddress,
 } = dataSlice.actions;
 
-export default dataSlice.reducer;
+export default dataSlice;
