@@ -12,8 +12,8 @@ import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import AddressForm from './AddressForm';
-import PaymentForm from './PaymentForm';
+import ProjectForm from './ProjectForm';
+import AchievmentForm from './AchievmentForm';
 import Review from './Review';
 
 function Copyright() {
@@ -34,9 +34,9 @@ const steps = ['Project Details', 'Partner Details', 'Achievment Details'];
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return <ProjectForm />;
     case 1:
-      return <PaymentForm />;
+      return <AchievmentForm />;
     case 2:
       return <Review />;
     default:
