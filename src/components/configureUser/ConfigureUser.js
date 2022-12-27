@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import ConfigureForm from "./ConfigureForm";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { startDate } from "../../dataSlice";
+// import { startDate } from  "../../store/dataSlice";
 
 function Copyright() {
   return <Typography variant="body2" color="text.secondary" align="center"></Typography>;
@@ -31,7 +31,6 @@ function getStepContent(step) {
       throw new Error("Unknown step");
   }
 }
-
 const theme = createTheme();
 
 export default function ConfigureUser() {
@@ -75,21 +74,6 @@ export default function ConfigureUser() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {/* <AppBar
-        position="absolute"
-        color="default"
-        elevation={0}
-        sx={{
-          position: "relative",
-          borderBottom: (t) => `1px solid ${t.palette.divider}`,
-        }}
-      >
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-           Configure User
-          </Typography>
-        </Toolbar>
-      </AppBar> */}
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
           <Typography component="h1" variant="h4" align="center">
@@ -112,7 +96,7 @@ export default function ConfigureUser() {
                   </Button>
                 )}
                 <Button variant="contained" onClick={handleNext} sx={{ mt: 3, ml: 1 }}>
-                  Add User
+                  Update User Achievmnet
                 </Button>
               </Box>
             </React.Fragment>

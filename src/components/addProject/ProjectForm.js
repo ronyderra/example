@@ -12,7 +12,7 @@ import {
   endDate,
   startDate,
   collectionAddress,
-} from "../../dataSlice";
+} from  "../../store/dataSlice";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";

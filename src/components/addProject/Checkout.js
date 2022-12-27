@@ -17,7 +17,7 @@ import AchievmentForm from "./AchievmentForm";
 import Review from "./Review";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { startDate } from "../../dataSlice";
+// import { startDate } from "../../dataSlice";
 
 function Copyright() {
   return (
@@ -84,21 +84,6 @@ export default function Checkout() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar
-        position="absolute"
-        color="default"
-        elevation={0}
-        sx={{
-          position: "relative",
-          borderBottom: (t) => `1px solid ${t.palette.divider}`,
-        }}
-      >
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            XP-NETWORK
-          </Typography>
-        </Toolbar>
-      </AppBar>
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
           <Typography component="h1" variant="h4" align="center">

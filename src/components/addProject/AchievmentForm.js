@@ -7,7 +7,7 @@ import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { useSelector, useDispatch } from "react-redux";
-import { achievments } from "../../dataSlice";
+import { achievments } from "../../store/dataSlice";
 export default function PaymentForm() {
   const [data, setData] = useState([]);
   const dispatch = useDispatch();

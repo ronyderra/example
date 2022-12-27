@@ -6,9 +6,9 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-        <Checkout />
-        <AddUser />
-        <ConfigureUser />
+      <ConfigureUser />
+      <Checkout />
+      <AddUser />
     </div>
   );
 }
