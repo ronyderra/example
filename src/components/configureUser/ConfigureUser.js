@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import UserForm from "./UserForm";
+import ConfigureForm from "./ConfigureForm";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { startDate } from "../../dataSlice";
@@ -26,7 +26,7 @@ const steps = ["Project Details", "Achievment Details", "Summury"];
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <UserForm />;
+      return <ConfigureForm />;
     default:
       throw new Error("Unknown step");
   }
@@ -34,7 +34,7 @@ function getStepContent(step) {
 
 const theme = createTheme();
 
-export default function AddUser() {
+export default function ConfigureUser() {
   const data = useSelector((state) => state.data);
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -83,17 +83,17 @@ export default function AddUser() {
           position: "relative",
           borderBottom: (t) => `1px solid ${t.palette.divider}`,
         }}
-      > */}
-        {/* <Toolbar>
+      >
+        <Toolbar>
           <Typography variant="h6" color="inherit" noWrap>
-            Add User
+           Configure User
           </Typography>
-        </Toolbar> */}
-      {/* </AppBar> */}
+        </Toolbar>
+      </AppBar> */}
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
           <Typography component="h1" variant="h4" align="center">
-            Add User
+          Configure User
           </Typography>
           <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}></Stepper>
           {activeStep === steps.length ? (
