@@ -12,7 +12,7 @@ import {
   endDate,
   startDate,
   collectionAddress,
-} from "../dataSlice";
+} from "../../dataSlice";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
@@ -20,7 +20,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs, { Dayjs } from "dayjs";
 
-export default function ProjectForm() {
+export default function UserForm() {
   const [value, setValue] = React.useState(dayjs("2014-08-18T21:11:54"));
   const [value1, setValue1] = React.useState(dayjs("2014-08-18T21:11:54"));
 
@@ -38,9 +38,6 @@ export default function ProjectForm() {
 
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        Project Details
-      </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <TextField

@@ -17,7 +17,7 @@ import AchievmentForm from "./AchievmentForm";
 import Review from "./Review";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { startDate } from "../dataSlice";
+import { startDate } from "../../dataSlice";
 
 function Copyright() {
   return (
