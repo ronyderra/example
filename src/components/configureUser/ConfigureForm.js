@@ -1,7 +1,7 @@
 import * as React from "react";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   name,
   description,
@@ -11,23 +11,9 @@ import {
   endDate,
   startDate,
   collectionAddress,
-} from  "../../store/dataSlice";
-import dayjs, { Dayjs } from "dayjs";
+} from "../../store/dataSlice";
 
 export default function ConfigureForm() {
-  const [value, setValue] = React.useState(dayjs("2014-08-18T21:11:54"));
-  const [value1, setValue1] = React.useState(dayjs("2014-08-18T21:11:54"));
-
-  const handleChange = (newValue) => {
-    setValue(newValue);
-    dispatch(startDate(String(newValue)));
-  };
-
-  const handleChange1 = (newValue) => {
-    setValue1(newValue);
-    dispatch(endDate(String(newValue)));
-  };
-
   const dispatch = useDispatch();
 
   return (
@@ -76,7 +62,6 @@ export default function ConfigureForm() {
             onChange={(e) => dispatch(collectionAddress(e.target.value))}
           />
         </Grid>
-
         <Grid item xs={12}>
           <TextField
             required
