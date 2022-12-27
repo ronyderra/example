@@ -3,15 +3,14 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import { useDispatch } from "react-redux";
 import {
-  name,
-  description,
+  telegramUsername,
   projectNumber,
-  twitterPartnerId,
-  twitterPostId,
-  endDate,
-  startDate,
-  collectionAddress,
-} from "../../store/dataSlice";
+  progressNumber,
+  completed,
+  achievmentNumber,
+} from "../../store/configureUserSlice";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 
 export default function ConfigureForm() {
   const dispatch = useDispatch();
@@ -27,7 +26,7 @@ export default function ConfigureForm() {
             label="Telegram Username"
             fullWidth
             variant="standard"
-            onChange={(e) => dispatch(name(e.target.value))}
+            onChange={(e) => dispatch(telegramUsername(e.target.value))}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -38,7 +37,7 @@ export default function ConfigureForm() {
             label="Achievment Number"
             fullWidth
             variant="standard"
-            onChange={(e) => dispatch(projectNumber(e.target.value))}
+            onChange={(e) => dispatch(achievmentNumber(e.target.value))}
           />
         </Grid>
         <Grid item xs={12}>
@@ -49,7 +48,7 @@ export default function ConfigureForm() {
             label="Project Number"
             fullWidth
             variant="standard"
-            onChange={(e) => dispatch(description(e.target.value))}
+            onChange={(e) => dispatch(projectNumber(e.target.value))}
           />
         </Grid>
         <Grid item xs={12}>
@@ -59,18 +58,14 @@ export default function ConfigureForm() {
             label="Progress Number - (1 => 5)"
             fullWidth
             variant="standard"
-            onChange={(e) => dispatch(collectionAddress(e.target.value))}
+            onChange={(e) => dispatch(progressNumber(e.target.value))}
           />
         </Grid>
-        <Grid item xs={12}>
-          <TextField
-            required
-            id="completed"
-            name="completed"
-            label="completed - (true or false)"
-            fullWidth
-            variant="standard"
-            onChange={(e) => dispatch(twitterPostId(e.target.value))}
+        <Grid item xs={2}>
+          <FormControlLabel
+            control={<Checkbox color="secondary" name="saveCard" />}
+            label="completed"
+            onChange={(e) => dispatch(completed({ checked: e.target.checked }))}
           />
         </Grid>
       </Grid>

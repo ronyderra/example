@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const dataSlice = createSlice({
+export const configureUser = createSlice({
   name: "configureUser",
   initialState: {
     telegramUsername: "",
     projectNumber: "",
     progressNumber: "",
-    completed: "",
+    completed: false,
     achievmentNumber: "",
   },
   reducers: {
@@ -29,19 +29,12 @@ export const dataSlice = createSlice({
   },
 });
 
-// Action creators are generated for each case reducer function
 export const {
-  name,
-  description,
-  collectionChain,
+  telegramUsername,
   projectNumber,
-  achievments,
-  twitterPartnerId,
-  twitterPostId,
-  currentProject,
-  endDate,
-  startDate,
-  collectionAddress,
-} = dataSlice.actions;
+  progressNumber,
+  completed,
+  achievmentNumber,
+} = configureUser.actions;
 
-export default dataSlice;
+export default configureUser;
