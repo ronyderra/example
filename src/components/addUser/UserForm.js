@@ -46,7 +46,6 @@ export default function UserForm() {
             name="name"
             label="Project Name"
             fullWidth
-            autoComplete="given-name"
             variant="standard"
             onChange={(e) => dispatch(name(e.target.value))}
           />
@@ -70,7 +69,6 @@ export default function UserForm() {
             name="description"
             label="Partnering with...."
             fullWidth
-            autoComplete="Project Details-line1"
             variant="standard"
             onChange={(e) => dispatch(description(e.target.value))}
           />
@@ -94,7 +92,6 @@ export default function UserForm() {
             name="twitterPostId"
             label="Twitter Post Id"
             fullWidth
-            autoComplete="shipping postal-code"
             variant="standard"
             onChange={(e) => dispatch(twitterPostId(e.target.value))}
           />
@@ -106,7 +103,6 @@ export default function UserForm() {
             name="twitterPartnerId"
             label="Twitter Partner Id"
             fullWidth
-            autoComplete="shipping country"
             variant="standard"
             onChange={(e) => dispatch(twitterPartnerId(e.target.value))}
           />
