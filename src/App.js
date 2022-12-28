@@ -1,5 +1,5 @@
 import Checkout from "./components/addProject/Checkout";
-import AddUser from "./components/addUser/AddUser";
+import MapAchievments from "./components/mapAchievments/MapAchievments";
 import ConfigureUser from "./components/configureUser/ConfigureUser";
 import "./App.css";
 
@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <ConfigureUser />
       <Checkout />
-      {/* <AddUser /> */}
+      <MapAchievments />
     </div>
   );
 }
