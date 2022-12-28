@@ -20,10 +20,7 @@ import axios from "axios";
 // import { startDate } from "../../dataSlice";
 
 function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-    </Typography>
-  );
+  return <Typography variant="body2" color="text.secondary" align="center"></Typography>;
 }
 
 const steps = ["Project Details", "Achievment Details", "Summury"];
@@ -47,10 +44,14 @@ export default function Checkout() {
   const data = useSelector((state) => state.data);
   const [activeStep, setActiveStep] = React.useState(0);
 
+  const resp = axios.get("https://xp-challenges.herokuapp.com/getLastProjAdded");
+  const projectNumber = resp.data.projectNumber;
+
   const dataForPost = {
     ...data,
     startDate: new Date(data.startDate),
     endDate: new Date(data.startDate),
+    projectNumber
   };
 
   var config = {
@@ -99,7 +100,7 @@ export default function Checkout() {
           {activeStep === steps.length ? (
             <React.Fragment>
               <Typography variant="h5" gutterBottom>
-               Project Added
+                Project Added
               </Typography>
             </React.Fragment>
           ) : (
