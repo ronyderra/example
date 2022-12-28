@@ -1,23 +1,19 @@
 import * as React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Toolbar from "@mui/material/Toolbar";
 import Paper from "@mui/material/Paper";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
-import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import ProjectForm from "./ProjectForm";
 import AchievmentForm from "./AchievmentForm";
 import Review from "./Review";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from "axios";
-// import { startDate } from "../../dataSlice";
 
 function Copyright() {
   return <Typography variant="body2" color="text.secondary" align="center"></Typography>;
@@ -44,35 +40,36 @@ export default function Checkout() {
   const data = useSelector((state) => state.data);
   const [activeStep, setActiveStep] = React.useState(0);
 
-  const resp = axios.get("https://xp-challenges.herokuapp.com/getLastProjAdded");
-  const projectNumber = resp.data.projectNumber;
-
-  const dataForPost = {
-    ...data,
-    startDate: new Date(data.startDate),
-    endDate: new Date(data.startDate),
-    projectNumber
-  };
-
-  var config = {
-    method: "post",
-    url: "https://xp-challenges.herokuapp.com/addProject",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    data: dataForPost,
-  };
-
-  const handleNext = () => {
+  const handleNext = async () => {
     console.log(activeStep + 1);
+
     if (activeStep + 1 === 3) {
-      console.log("submit");
+      const resp = await axios.get("https://xp-challenges.herokuapp.com/getLastProjAdded");
+      const projectNumber = Number(resp.data.projectNumber) + 1;
+
+      const dataForPost = {
+        ...data,
+        startDate: new Date(data.startDate),
+        endDate: new Date(data.startDate),
+        projectNumber,
+      };
+
+      var config = {
+        method: "post",
+        url: "https://xp-challenges.herokuapp.com/addProject",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: dataForPost,
+      };
+
       axios(config)
         .then(function (response) {
           console.log(JSON.stringify(response.data));
         })
         .catch(function (error) {
           console.log(error);
+          alert("Failed");
         });
     }
     setActiveStep(activeStep + 1);
