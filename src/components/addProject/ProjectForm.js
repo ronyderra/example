@@ -12,7 +12,7 @@ import {
   endDate,
   startDate,
   collectionAddress,
-} from  "../../store/dataSlice";
+} from "../../store/dataSlice";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
@@ -54,24 +54,12 @@ export default function ProjectForm() {
             onChange={(e) => dispatch(name(e.target.value))}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="projectNumber"
-            name="projectNumber"
-            label="Project Number"
-            fullWidth
-            autoComplete="family-name"
-            variant="standard"
-            onChange={(e) => dispatch(projectNumber(e.target.value))}
-          />
-        </Grid>
         <Grid item xs={12}>
           <TextField
             required
             id="description"
             name="description"
-            label="Partnering with...."
+            label="Partnering with....(description)"
             fullWidth
             autoComplete="Project Details-line1"
             variant="standard"
@@ -80,9 +68,10 @@ export default function ProjectForm() {
         </Grid>
         <Grid item xs={12}>
           <TextField
+            required
             id="collectionAddress"
             name="collectionAddress"
-            label="Collection Address"
+            label="Collection address for bridge transactions"
             fullWidth
             autoComplete="Project Details-line2"
             variant="standard"
@@ -117,6 +106,7 @@ export default function ProjectForm() {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <Grid item xs={12} sm={6}>
             <DateTimePicker
+              required
               label="Start Date"
               value={value}
               onChange={handleChange}
@@ -125,6 +115,7 @@ export default function ProjectForm() {
           </Grid>
           <Grid item xs={12} sm={6}>
             <DateTimePicker
+              required
               label="End Date"
               value={value1}
               onChange={handleChange1}
