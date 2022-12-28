@@ -11,20 +11,20 @@ export const configureUser = createSlice({
   },
   reducers: {
     telegramUsername: (state, action) => {
-      state.projectNumber = action.payload;
+      state.telegramUsername = action.payload;
     },
     projectNumber: (state, action) => {
-      state.name = Number(action.payload);
+      state.projectNumber = Number(action.payload);
     },
     progressNumber: (state, action) => {
-      state.description = Number(action.payload);
+      state.progressNumber = Number(action.payload);
     },
     completed: (state, action) => {
       const { checked } = action.payload;
       state.completed = checked;
     },
     achievmentNumber: (state, action) => {
-      state.collectionAddress = Number(action.payload);
+      state.achievmentNumber = Number(action.payload);
     },
   },
 });

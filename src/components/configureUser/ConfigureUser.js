@@ -34,37 +34,27 @@ function getStepContent(step) {
 const theme = createTheme();
 
 export default function ConfigureUser() {
-  const data = useSelector((state) => state.data);
+  const data = useSelector((state) => state.configureUser);
   const [activeStep, setActiveStep] = React.useState(0);
 
-  const dataForPost = {
-    ...data,
-    startDate: new Date(data.startDate),
-    endDate: new Date(data.startDate),
-  };
-
-  var config = {
-    method: "post",
-    url: "https://xp-challenges.herokuapp.com/addProject",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    data: dataForPost,
-  };
-
-  const handleNext = () => {
+  const handleSubmit = () => {
     console.log(activeStep + 1);
-    if (activeStep + 1 === 3) {
-      console.log("submit");
-      axios(config)
-        .then(function (response) {
-          console.log(JSON.stringify(response.data));
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
-    setActiveStep(activeStep + 1);
+    console.log(data);
+    var config = {
+      method: "patch",
+      url: "https://xp-challenges.herokuapp.com/updateUserAchievment",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   const handleBack = () => {
@@ -77,7 +67,7 @@ export default function ConfigureUser() {
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
           <Typography component="h1" variant="h4" align="center">
-          Configure User
+            Configure User
           </Typography>
           <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}></Stepper>
           {activeStep === steps.length ? (
@@ -95,7 +85,7 @@ export default function ConfigureUser() {
                     Back
                   </Button>
                 )}
-                <Button variant="contained" onClick={handleNext} sx={{ mt: 3, ml: 1 }}>
+                <Button variant="contained" onClick={handleSubmit} sx={{ mt: 3, ml: 1 }}>
                   Update User Achievmnet
                 </Button>
               </Box>

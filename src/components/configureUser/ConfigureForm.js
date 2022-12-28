@@ -11,13 +11,27 @@ import {
 } from "../../store/configureUserSlice";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import axios from "axios";
 
 export default function ConfigureForm() {
   const dispatch = useDispatch();
+  const [currentProj, setCurretProj] = React.useState("");
+
+  React.useEffect(async () => {
+    setCurretProj(await current());
+  }, []);
+
+  const current = async () => {
+    const resp = await axios.get("https://xp-challenges.herokuapp.com/getLastProjAdded");
+    return Number(resp.data.projectNumber);
+  };
 
   return (
     <React.Fragment>
       <Grid container spacing={3}>
+        <Grid item xs={12} >
+          <div>current project number : {currentProj}</div>
+        </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
             required
